@@ -53,5 +53,16 @@ public class Patient {
      */
     public List<PatientRecord> getRecords(long startTime, long endTime) {
         // TODO Implement and test this method
+        List<PatientRecord> records = new ArrayList<>();
+        long time = endTime - startTime;
+        /* 
+        for(int i = 0; i <= 10; i++) {
+            if(){
+                records.add(e)
+            }
+
+        }
+        */
+        return records;
     }
 }
