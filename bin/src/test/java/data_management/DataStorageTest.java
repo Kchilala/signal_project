@@ -9,7 +9,7 @@ import com.data_management.DataStorage;
 import com.data_management.PatientRecord;
 
 class DataStorageTest {
-    // let's see
+
     @Test
     void testAddAndGetRecords() {
         
