@@ -7,17 +7,46 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Implementation of {@link OutputStrategy} that writes patient data to files.
+ * Each label corresponds to a separate file where the data is appended.
+ * Useful for logging or later processing of patient monitoring information.
+ *
+ * The class ensures thread-safe access using {@link ConcurrentHashMap}.
+ */
 public class FileOutputStrategy implements OutputStrategy {
+    /**
+     * The base directory where output files will be created.
+     */
     // changed variable name 
     private String baseDirectory;
+
+    /**
+     * A mapping from data labels to file paths.
+     */
     // changed variable name
     public final ConcurrentHashMap<String, String> fileMap = new ConcurrentHashMap<>();
 
+    /**
+     * Constructs a FileOutputStrategy with the specified base directory.
+     *
+     * @param baseDirectory The directory in which to store output files.
+     */
     public FileOutputStrategy(String baseDirectory) {
         // changed variable name 
         this.baseDirectory = baseDirectory;
     }
 
+    /**
+     * Outputs patient data by appending it to a file corresponding to the label.
+     * If the file does not exist, it is created.
+     *
+     * @param patientId  The unique identifier of the patient.
+     * @param timestamp  The timestamp of the data in milliseconds since epoch.
+     * @param label      The type or category of the data (e.g., ECG, Alert).
+     * @param data       The actual data content to write.
+     * @throws IOException if there is an error creating directories or writing to the file.
+     */
     @Override
     public void output(int patientId, long timestamp, String label, String data) {
         try {
