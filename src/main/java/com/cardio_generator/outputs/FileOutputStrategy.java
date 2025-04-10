@@ -14,8 +14,7 @@ public class FileOutputStrategy implements OutputStrategy {
     public final ConcurrentHashMap<String, String> fileMap = new ConcurrentHashMap<>();
 
     public FileOutputStrategy(String baseDirectory) {
-
-        this.baseDirectory = baseDirectory;
+      this.baseDirectory = baseDirectory;
     }
 
     @Override
