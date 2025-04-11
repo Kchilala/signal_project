@@ -23,6 +23,8 @@ import com.cardio_generator.outputs.OutputStrategy;
 import com.cardio_generator.outputs.TcpOutputStrategy;
 import com.cardio_generator.outputs.WebSocketOutputStrategy;
 /**
+* So, this class creates patient objects and functions as a operator centre for certain fuctions that
+*     gives back feedback on patient information and gives an alert signal if above certain treshhold.
 *
 * @author Lars 
 * @author Keci
@@ -46,8 +48,8 @@ public class HealthDataSimulator {
      * the method helps retrieving info but also helps randomizing order of patients for fairness and schedules task.
      * <p>
      * the main method takes an String array variable named args and it contains array of strings that are typed in by operator.
-     * these strings are compared to inputs like "-h","--patient-count","--output" or if nothing is recognized 
-     * we define a default option and return this : "Unknown option '" + args[i] + "'".
+     *     these strings are compared to inputs like "-h","--patient-count","--output" or if nothing is recognized 
+     *         we define a default option and return this : "Unknown option '" + args[i] + "'".
      * it then prints out the respective cases and there information.
      * 
      * @param args these are command line argument for inputs like "-h","--patient-count","--output" or 
@@ -66,7 +68,13 @@ public class HealthDataSimulator {
         scheduleTasksForPatients(patientIds);
     }
     /**
-     *
+     * this method returns the commands one can put in in the command line argument with
+     * <p>
+     * this gives depending on the input an help statement to operate the machine.
+     * it also gives an option of --output and then gives an extra multichild tree that can let the
+     *     operator choose again what he or she wants within that menu to get the right information.
+     * if the operator enters wrong line in the command line he or she will get information on handling
+     *     the system in the right way.
      * 
      * @param args these are command line argument for inputs like "-h","--patient-count","--output" or 
      *            if nothing is recognized we define a default option and return this : "Unknown option '" + args[i] + "'".
@@ -176,7 +184,7 @@ public class HealthDataSimulator {
      * Initializes a list of patient IDs from 1 to the specified patient count(default set at 50).
      * <p>
      * This method creates a list of integers representing patient IDs, starting from 1 up to the specified
-     * number of patients. It is useful for assigning unique identifiers to a set of patients in the simulation.
+     *     number of patients. It is useful for assigning unique identifiers to a set of patients in the simulation.
      *
      * @param patientCount The total number of patients to generate IDs for.
      * @return A list of integers representing patient IDs from 1 to {@code patientCount}.
@@ -189,6 +197,13 @@ public class HealthDataSimulator {
         return patientIds;
     }
 
+    /**
+     * This method gives the information in realltime on specific patients data like ecg, blood saturation, blood pressure, bloodlevels
+     *     and can create an alert based on specific data of the patient.
+     *
+     * @param patientIds puts in a list of patientIds that contains information on their realltime biometrics feedback in the hospital
+     * @return A list of integers representing patient IDs from 1 to {@code patientCount}.
+     */
     private static void scheduleTasksForPatients(List<Integer> patientIds) {
         ECGDataGenerator ecgDataGenerator = new ECGDataGenerator(patientCount);
         BloodSaturationDataGenerator bloodSaturationDataGenerator = new BloodSaturationDataGenerator(patientCount);
@@ -208,8 +223,8 @@ public class HealthDataSimulator {
     * Schedules a task to run at a fixed rate with a random initial delay.
     * <p>
     * This method schedules the specified task to be executed periodically at a fixed rate, with an initial delay
-    * that is randomly selected from the range [0, 4] seconds. The task will continue to execute at the specified
-    * interval until canceled.
+    *     that is randomly selected from the range [0, 4] seconds. The task will continue to execute at the specified
+    *         interval until canceled.
     *
     * @param task The task to be scheduled for periodic execution. This should be a {@link Runnable} that contains
     *             the code to be executed.
