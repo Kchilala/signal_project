@@ -66,4 +66,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## project meber
    - studentid: i6409969
-   - studentid:fit werkt niet meer
+   
