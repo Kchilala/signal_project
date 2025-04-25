@@ -33,7 +33,7 @@ public class Patient {
      * @param recordType       the type of record, e.g., "HeartRate",
      *                         "BloodPressure"
      * @param timestamp        the time at which the measurement was taken, in
-     *                         milliseconds since UNIX epoch
+     *                         seconds
      */
     public void addRecord(double measurementValue, String recordType, long timestamp) {
         PatientRecord record = new PatientRecord(this.patientId, measurementValue, recordType, timestamp);
@@ -45,9 +45,9 @@ public class Patient {
      * specified time range.
      * The method filters records based on the start and end times provided.
      *
-     * @param startTime the start of the time range, in milliseconds since UNIX
+     * @param startTime the start of the time range, in seconds
      *                  epoch
-     * @param endTime   the end of the time range, in milliseconds since UNIX epoch
+     * @param endTime   the end of the time range, in seconds since UNIX epoch
      * @return a list of PatientRecord objects that fall within the specified time
      *         range
      */
