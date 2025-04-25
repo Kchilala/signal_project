@@ -67,3 +67,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## project meber
    - studentid: i6409969
    - studentid: i6404000
+
+## UML exercise
+forked link: (for UML explanation and visualization)
+https://github.com/SaintFrancis-3th/signal_project/tree/master/uml_models
+
+
