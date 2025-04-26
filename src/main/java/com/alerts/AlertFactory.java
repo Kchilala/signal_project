@@ -1,9 +1,6 @@
 package com.alerts;
 
-public class AlertFactory {
 
-    public void createAlert(String patientId, String condition, long timestamp) {
-        
-    }
-    
+public abstract class AlertFactory {
+    public abstract Alert createAlert(String patientId, String condition, long timestamp);
 }
